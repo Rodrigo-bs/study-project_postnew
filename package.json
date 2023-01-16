@@ -1,0 +1,36 @@
+{
+   "name": "postnew",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "typeorm": "typeorm-ts-node-commonjs",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "ts-node src/index.ts"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Rodrigo-bs/study-project_postnew.git"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/Rodrigo-bs/study-project_postnew/issues"
+   },
+   "homepage": "https://github.com/Rodrigo-bs/study-project_postnew#readme",
+   "dependencies": {
+      "@types/express": "^4.17.15",
+      "body-parser": "^1.20.1",
+      "express": "^4.18.2",
+      "mysql2": "^2.3.3",
+      "pg": "^8.4.0",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.11"
+   },
+   "devDependencies": {
+      "@types/node": "^16.11.10",
+      "ts-node": "10.7.0",
+      "typescript": "4.5.2"
+   }
+}
