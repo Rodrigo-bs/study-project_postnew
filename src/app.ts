@@ -19,7 +19,8 @@ class App {
 
     private database() {
         this.databaseConfig.initialize()
-            .then(() => {
+            .then(async (conn) => {
+                await conn.runMigrations();
                 console.log('Banco de dados iniciado com sucesso!');
             })
             .catch((err) => {

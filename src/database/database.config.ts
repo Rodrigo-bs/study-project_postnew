@@ -13,6 +13,7 @@ const appDataConfig = new DataSource({
     entities: [],
     migrations: [],
     subscribers: [],
+    migrationsTableName: 'migrations'
 });
 
 export default appDataConfig;
