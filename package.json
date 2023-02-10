@@ -7,7 +7,7 @@
       "typeorm-run-migrations": "ts-node ./node_modules/typeorm/cli.js -d src/data-source.ts migration:run",
       "typeorm-revert-migrations": "ts-node ./node_modules/typeorm/cli.js -d src/data-source.ts migration:revert",
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "ts-node src/index.ts"
+      "dev": "nodemon src/index.ts"
    },
    "repository": {
       "type": "git",

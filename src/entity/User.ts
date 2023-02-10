@@ -1,9 +1,9 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Post } from './Post';
 
 @Entity()
 export class User {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     public id!: number;
 
     @Column('varchar')
@@ -11,6 +11,9 @@ export class User {
 
     @Column('varchar')
     public email!: string;
+
+    @Column('varchar')
+    public salt!: string
 
     @Column('varchar')
     public password!: string

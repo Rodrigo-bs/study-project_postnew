@@ -1,10 +1,13 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from 'typeorm';
 import { User } from './User';
 
 @Entity()
 export class Post {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     public id!: number;
+
+    @OneToMany(() => User, (user) => user.posts)
+    public user!: User;
 
     @Column('varchar')
     public title!: string;
@@ -14,9 +17,6 @@ export class Post {
 
     @Column('text')
     public config!: string;
-
-    @OneToMany(() => User, (user) => user.posts)
-    public user!: User;
 
     @CreateDateColumn()
     public createdAt!: Date;
