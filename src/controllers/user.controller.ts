@@ -3,8 +3,11 @@ import { Response, Request } from 'express';
 import appDataConfig from '../database/database.config';
 import Crypto from '../core/crypto';
 
+import UserModel from '../model/User.model';
 import { User } from '../entity/User';
 import { Repository } from 'typeorm';
+
+const errorsObject = JSON.parse(JSON.stringify(require('../configs/errors.messages.json'))); 
 
 class UserController {
     public static async create(req: Request, res: Response): Promise<Response> {
@@ -25,12 +28,33 @@ class UserController {
     }
 
     public static async selectById(req: Request, res: Response): Promise<Response> {
-        const userId = Number.parseInt(req.params.id);
-        const userRepository: Repository<User> = appDataConfig.getRepository(User);
+        if (req.params.id == null || req.params.id == undefined) { // id param is null
+            return res.status(400).json({
+                code: errorsObject.e400.ID_MISSING[0],
+                message: errorsObject.e400.ID_MISSING[1],
+                customerMessage: errorsObject.e400.ID_MISSING[2]
+            });
+        }
 
-        const postCategory: User = await userRepository.manager.findOneBy(User, { id: userId }) as User;
-        
-        return res.json(postCategory);
+        if (!Number.isInteger(+req.params.id)) { // id is an invalid format
+            return res.status(400).json({
+                code: errorsObject.e400.INVALID_FORMAT_ID[0],
+                message: errorsObject.e400.INVALID_FORMAT_ID[1],
+                customerMessage: errorsObject.e400.INVALID_FORMAT_ID[2]
+            });
+        }
+
+        const user = await UserModel.selectById(req.params.id);
+
+        if (user == null) { // User not found
+            return res.status(406).json({
+                code: errorsObject.e406.USER_NOT_FOUND[0],
+                message: errorsObject.e406.USER_NOT_FOUND[1],
+                customerMessage: errorsObject.e406.USER_NOT_FOUND[2]
+            });
+        }
+
+        return res.status(200).json(user);
     }
 }
 

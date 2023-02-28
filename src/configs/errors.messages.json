@@ -1,0 +1,21 @@
+{
+    "e400": {
+        "ID_MISSING": [
+            "IDISM",
+            "Erro, ID faltando",
+            "Por favor, verifique as informações passadas"
+        ],
+        "INVALID_FORMAT_ID": [
+            "IDINV",
+            "Erro, ID com formato inválido",
+            "Alguma infomação está inválida"
+        ]
+    },
+    "e406": {
+        "USER_NOT_FOUND": [
+            "USERNF",
+            "Usuário não encontrado",
+            "O usuário não foi encontrado"
+        ]
+    }
+}
